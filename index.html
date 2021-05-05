@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kranky&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Unicase&display=swap" rel="stylesheet">
     <title>Pokedex</title>
 
     <script>
@@ -20,6 +26,7 @@
 
         function showPokemonInfo() {
             document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
+            document.getElementById('pokemonPic').src = currentPokemon['sprites']['front_default'];
         }
 
     </script>
@@ -27,22 +34,64 @@
     <style>
         body {
             margin: 0;
+            background-image: url(img/bg2.jpeg);
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
         }
 
         #pokedex {
             display: flex;
-            min-height: 50vh;
-            background-color: grey;
-            color: white;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(88,51,37);
+            opacity: 0.8;
+            padding: 15px;
+            color: rgb(255,208,129);
+            cursor: pointer;
         }
 
+        .header {
+            font-family: 'Londrina Outline', cursive;
+            font-size: 90px;
+            animation: textshadow 8s infinite alternate; 
+        }
+
+        @keyframes textshadow {
+            0%   { text-shadow: 1px 1px 0px rgb(20,15,12) }
+            10%   { text-shadow: 3px 3px 2px rgb(20,15,12) }
+            20%  { text-shadow: 9px 10px 6px rgb(170,102,34) }
+            40%  { text-shadow: 10px 15px 6px rgb(51,38,39)}
+            60%  { text-shadow: 0px 10px 4px rgb(51,38,39)}
+            80%  { text-shadow: -10px 8px 3px rgb(51,38,39)}
+            100%  { text-shadow: 1px 5px 1px rgb(51,38,39) }
+        }
+
+        h1 {
+            font-family: 'Kranky', cursive;
+            text-shadow: 2px 2px rgb(20, 15, 15);
+            margin-bottom: -5px;
+        }
+
+        h2 {
+            font-family: 'Delius Unicase', cursive;
+            color: rgb(190,138,18);
+            margin-bottom: 40px;
+            text-shadow: 2px 2px rgb(51,38,39);
+        }
     </style>
 </head>
 <body onload="loadPokemon()">
+    <h1 class="header">Pokedex</h1>
+
+    <h2>Overview</h2>
+
     <div id="pokedex">
-
         <h1 id="pokemonName">Name</h1>
-
+        <img id="pokemonPic">
     </div>
 </body>
 </html>

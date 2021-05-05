@@ -7,11 +7,42 @@
     <title>Pokedex</title>
 
     <script>
+        let currentPokemon;
 
-        
+        async function loadPokemon() {
+            let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
+            let response = await fetch(url);
+            currentPokemon = await response.json();
+            console.log('Loaded Pokemon', currentPokemon);
+
+            showPokemonInfo();
+        }
+
+        function showPokemonInfo() {
+            document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
+        }
+
     </script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #pokedex {
+            display: flex;
+            min-height: 50vh;
+            background-color: grey;
+            color: white;
+        }
+
+    </style>
 </head>
-<body>
-    
+<body onload="loadPokemon()">
+    <div id="pokedex">
+
+        <h1 id="pokemonName">Name</h1>
+
+    </div>
 </body>
 </html>

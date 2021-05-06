@@ -13,20 +13,77 @@
     <title>Pokedex</title>
 
     <script>
-        let currentPokemon;
 
-        async function loadPokemon() {
-            let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
-            let response = await fetch(url);
-            currentPokemon = await response.json();
-            console.log('Loaded Pokemon', currentPokemon);
+        let charmander;
+        let pikachu;
+        let venusaur;
+
+        /**
+         * loading data from API
+        */
+         async function loadPokemon() {
+            let charmanderURL = 'https://pokeapi.co/api/v2/pokemon/charmander';
+            let charmanderResponse = await fetch(charmanderURL);
+            charmander = await charmanderResponse.json();
+
+            let pikachuURL = 'https://pokeapi.co/api/v2/pokemon/pikachu';
+            let pikachuResponse = await fetch(pikachuURL);
+            pikachu = await pikachuResponse.json();
+
+            let venusaurURL = 'https://pokeapi.co/api/v2/pokemon/venusaur';
+            let venusaurResponse = await fetch(venusaurURL);
+            venusaur = await venusaurResponse.json();
 
             showPokemonInfo();
         }
 
+
+        /**
+         * selected Infos from API
+        */
+        let pokemons = [
+            {
+                'url': 'https://pokeapi.co/api/v2/pokemon/charmander',
+                'name': `${charmander}['name']`,
+                'pic': `${charmander}['sprites']['front_default']`,
+                'height': '0,60m',
+                'weight': '8,5kg',
+                'abilities': 'Blaze, Solar-Power',
+                'cathegory': 'lizard-Pokémon'
+            },
+            {
+                'url': 'https://pokeapi.co/api/v2/pokemon/pikachu',
+                'name': `${pikachu}['name']`,
+                'pic': `${pikachu}['sprites']['front_default']`,
+                'height': '0,40m',
+                'weight': '6,0kg',
+                'abilities': 'statics, lightning rod',
+                'cathegory': 'mouse-Pokémon'
+            },
+            {
+                'url': 'https://pokeapi.co/api/v2/pokemon/venusaur',
+                'name': `${venusaur}['name']`,
+                'pic': `${venusaur}['sprites']['front_default']`,
+                'height': '2,4m',
+                'weight': '155,5kg',
+                'abilities': 'Chlorophyll, greasy, emergency-fertilizer',
+                'cathegory': 'seeds-Pokémon'
+            }
+        ]
+
+        /**
+         * showing the Pokemon overview
+        */
         function showPokemonInfo() {
-            document.getElementById('pokemonName').innerHTML = currentPokemon['name'];
-            document.getElementById('pokemonPic').src = currentPokemon['sprites']['front_default'];
+            for (let index = 0; index < pokemons.length; index++) {
+                const currentPokemon = pokemons[index];
+
+                document.getElementById('pokedexArea').innerHTML += `<div class="pokedex">
+                <h1 id="pokemonName">${currentPokemon['name']}</h1>
+                <img id="pokemonPic" src="${currentPokemon['pic']}">
+                </div>
+                `;
+            }
         }
 
     </script>
@@ -34,15 +91,24 @@
     <style>
         body {
             margin: 0;
+        }
+
+        .overall {
             background-image: url(img/bg2.jpeg);
             background-size: cover;
-            justify-content: center;
+            height: 100vh;
             align-items: center;
             display: flex;
             flex-direction: column;
         }
 
-        #pokedex {
+        #pokedexArea {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .pokedex {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,12 +118,14 @@
             padding: 15px;
             color: rgb(255,208,129);
             cursor: pointer;
+            margin: 20px;
         }
 
         .header {
             font-family: 'Londrina Outline', cursive;
             font-size: 90px;
             animation: textshadow 8s infinite alternate; 
+            margin-bottom: 120px;
         }
 
         @keyframes textshadow {
@@ -82,16 +150,22 @@
             margin-bottom: 40px;
             text-shadow: 2px 2px rgb(51,38,39);
         }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body onload="loadPokemon()">
-    <h1 class="header">Pokedex</h1>
+    <div class="overall">
+        <h1 class="header">Pokedex</h1>
 
-    <h2>Overview</h2>
+        <img src="img/ball.svg" class="logo">
 
-    <div id="pokedex">
-        <h1 id="pokemonName">Name</h1>
-        <img id="pokemonPic">
+        <h2>Overview</h2>
+
+        <div id="pokedexArea"></div>
     </div>
 </body>
 </html>

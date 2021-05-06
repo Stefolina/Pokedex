@@ -39,51 +39,17 @@
 
 
         /**
-         * selected Infos from API
-        */
-        let pokemons = [
-            {
-                'url': 'https://pokeapi.co/api/v2/pokemon/charmander',
-                'name': `${charmander}['name']`,
-                'pic': `${charmander}['sprites']['front_default']`,
-                'height': '0,60m',
-                'weight': '8,5kg',
-                'abilities': 'Blaze, Solar-Power',
-                'cathegory': 'lizard-Pokémon'
-            },
-            {
-                'url': 'https://pokeapi.co/api/v2/pokemon/pikachu',
-                'name': `${pikachu}['name']`,
-                'pic': `${pikachu}['sprites']['front_default']`,
-                'height': '0,40m',
-                'weight': '6,0kg',
-                'abilities': 'statics, lightning rod',
-                'cathegory': 'mouse-Pokémon'
-            },
-            {
-                'url': 'https://pokeapi.co/api/v2/pokemon/venusaur',
-                'name': `${venusaur}['name']`,
-                'pic': `${venusaur}['sprites']['front_default']`,
-                'height': '2,4m',
-                'weight': '155,5kg',
-                'abilities': 'Chlorophyll, greasy, emergency-fertilizer',
-                'cathegory': 'seeds-Pokémon'
-            }
-        ]
-
-        /**
          * showing the Pokemon overview
         */
         function showPokemonInfo() {
-            for (let index = 0; index < pokemons.length; index++) {
-                const currentPokemon = pokemons[index];
+          document.getElementById('charmander').innerHTML = charmander['name'];
+          document.getElementById('charmanderPic').src = charmander['sprites']['front_default'];
 
-                document.getElementById('pokedexArea').innerHTML += `<div class="pokedex">
-                <h1 id="pokemonName">${currentPokemon['name']}</h1>
-                <img id="pokemonPic" src="${currentPokemon['pic']}">
-                </div>
-                `;
-            }
+          document.getElementById('pikachu').innerHTML = pikachu['name'];
+          document.getElementById('pikachuPic').src = pikachu['sprites']['front_default'];
+
+          document.getElementById('venusaur').innerHTML = venusaur['name'];
+          document.getElementById('venusaurPic').src = venusaur['sprites']['front_default'];
         }
 
     </script>
@@ -121,10 +87,12 @@
             margin: 20px;
             width: 200px;
             height: 150px;
+            transition: all ease-in-out 225ms;
         }
 
         .pokedex:hover {
             opacity: 1;
+            transform: rotate(2deg);
         }
 
         .header {
@@ -171,7 +139,22 @@
 
         <h2>Overview</h2>
 
-        <div id="pokedexArea"></div>
+        <div id="pokedexArea">
+            <div class="pokedex">
+                <h1 id="charmander"></h1>
+                <img id="charmanderPic">
+            </div>
+
+            <div class="pokedex">
+                <h1 id="pikachu"></h1>
+                <img id="pikachuPic">
+            </div>
+
+            <div class="pokedex">
+                <h1 id="venusaur"></h1>
+                <img id="venusaurPic">
+            </div>
+        </div>
 
         <a href="firstversion.html">Erste Version</a>
     </div>

@@ -52,11 +52,23 @@
           document.getElementById('venusaurPic').src = venusaur['sprites']['front_default'];
         }
 
+
+        /**
+         * Open Overlay with current Pokemondata
+        */
+       function showOverlay() {
+           document.getElementById('overlay').classList.remove('d-none');
+           document.getElementById('overlay').classList.add('overlay');
+       }
     </script>
 
     <style>
         body {
             margin: 0;
+        }
+
+        .d-none {
+            display: none;
         }
 
         .overall {
@@ -129,9 +141,34 @@
             width: 50px;
             height: 50px;
         }
+
+        .overlay {
+            display: flex;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100vh;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .pokeCard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 80vh;
+            height: 80vh;
+            background-color: rgb(190,138,18);
+        }
     </style>
 </head>
 <body onload="loadPokemon()">
+    <div id="overlay" class="d-none">
+        <div class="pokeCard" id="pokeCard"></div>
+    </div>
+
     <div class="overall">
         <h1 class="header">Pokedex</h1>
 
@@ -140,17 +177,17 @@
         <h2>Overview</h2>
 
         <div id="pokedexArea">
-            <div class="pokedex">
+            <div class="pokedex" onclick="showOverlay()">
                 <h1 id="charmander"></h1>
                 <img id="charmanderPic">
             </div>
 
-            <div class="pokedex">
+            <div class="pokedex" onclick="showOverlay()">
                 <h1 id="pikachu"></h1>
                 <img id="pikachuPic">
             </div>
 
-            <div class="pokedex">
+            <div class="pokedex" onclick="showOverlay()">
                 <h1 id="venusaur"></h1>
                 <img id="venusaurPic">
             </div>

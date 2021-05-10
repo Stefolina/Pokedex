@@ -13,7 +13,6 @@
     <title>Pokedex</title>
 
     <script>
-
         let charmander;
         let pikachu;
         let venusaur;
@@ -43,31 +42,31 @@
         */
         let pokemons = [
             {
-                'url': 'https://pokeapi.co/api/v2/pokemon/charmander',
-                'name': `${charmander}['name']`,
-                'pic': `${charmander}['sprites']['front_default']`,
-                'height': '0,60m',
-                'weight': '8,5kg',
-                'abilities': 'Blaze, Solar-Power',
-                'cathegory': 'lizard-Pokémon'
+                url: 'https://pokeapi.co/api/v2/pokemon/charmander',
+                name: `${charmander}['name']`,
+                pic: `${charmander}['sprites']['front_default']`,
+                height: '0,60m',
+                weight: '8,5kg',
+                abilities: 'Blaze, Solar-Power',
+                cathegory: 'lizard-Pokémon'
             },
             {
-                'url': 'https://pokeapi.co/api/v2/pokemon/pikachu',
-                'name': `${pikachu}['name']`,
-                'pic': `${pikachu}['sprites']['front_default']`,
-                'height': '0,40m',
-                'weight': '6,0kg',
-                'abilities': 'statics, lightning rod',
-                'cathegory': 'mouse-Pokémon'
+                url: 'https://pokeapi.co/api/v2/pokemon/pikachu',
+                name: `${pikachu}['name']`,
+                pic: `${pikachu}['sprites']['front_default']`,
+                height: '0,40m',
+                weight: '6,0kg',
+                abilities: 'statics, lightning rod',
+                cathegory: 'mouse-Pokémon'
             },
             {
-                'url': 'https://pokeapi.co/api/v2/pokemon/venusaur',
-                'name': `${venusaur}['name']`,
-                'pic': `${venusaur}['sprites']['front_default']`,
-                'height': '2,4m',
-                'weight': '155,5kg',
-                'abilities': 'Chlorophyll, greasy, emergency-fertilizer',
-                'cathegory': 'seeds-Pokémon'
+                url: 'https://pokeapi.co/api/v2/pokemon/venusaur',
+                name: `${venusaur}['name']`,
+                pic: `${venusaur}['sprites']['front_default']`,
+                height: '2,4m',
+                weight: '155,5kg',
+                abilities: 'Chlorophyll, greasy, emergency-fertilizer',
+                cathegory: 'seeds-Pokémon'
             }
         ]
 
@@ -85,6 +84,7 @@
                 `;
             }
         }
+
 
     </script>
 
@@ -163,15 +163,15 @@
         }
     </style>
 </head>
-<body onload="loadPokemon()">
-    <div class="overall">
-        <h1 class="header">Pokedex</h1>
+    <body onload="loadPokemon()">
+        <div class="overall">
+            <h1 class="header">Pokedex</h1>
 
-        <img src="img/ball.svg" class="logo">
+            <img src="img/ball.svg" class="logo">
 
-        <h2>Overview</h2>
+            <h2>Overview</h2>
 
-        <div id="pokedexArea"></div>
-    </div>
-</body>
+            <div id="pokedexArea"></div>
+        </div>
+    </body>
 </html>

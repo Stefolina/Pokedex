@@ -75,7 +75,7 @@
         */
         function showPokemonInfo() {
             for (let index = 0; index < pokemons.length; index++) {
-                const currentPokemon = pokemons[index];
+                const currentPokemon = pokemons[index].name;
 
                 document.getElementById('pokedexArea').innerHTML += `<div class="pokedex">
                 <h1 id="pokemonName">${currentPokemon['name']}</h1>

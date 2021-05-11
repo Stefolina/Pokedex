@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Kranky&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Delius+Unicase&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+
     <title>Pokedex</title>
 
     <script>
@@ -81,7 +84,7 @@
             for (let index = 0; index < pokemons.length; index++) {
                 const currentPokemon = pokemons[index];
 
-                document.getElementById('pokedexArea').innerHTML += `<div class="pokedex" onclick="showOverlay()">
+                document.getElementById('pokedexArea').innerHTML += `<div class="pokedex" onclick="showOverlay(${index})">
                 <h1 id="pokemonName">${currentPokemon['name']}</h1>
                 <img id="pokemonPic" src="${currentPokemon['pic']}">
                 </div>
@@ -92,9 +95,40 @@
          /**
          * Open Overlay with current Pokemondata
         */
-       function showOverlay() {
+       function showOverlay(index) {
            document.getElementById('overlay').classList.remove('d-none');
            document.getElementById('overlay').classList.add('overlay');
+           document.getElementById('overlayContent').classList.remove('d-none');
+           document.getElementById('overlayContent').classList.add('overlay-content');
+           
+           document.getElementById('overlayContent').innerHTML = `
+            <div class="pokecard" id="pokecard">
+                <img src="img/ball.svg" class="logocard">
+                <h1>${pokemons[index]['name']}</h1>
+                <img src="img/line.png" class="line">
+                <img src="${pokemons[index]['pic']}" class="pokemon-pic">
+
+                <img src="img/waage.svg" class="minilogos"><p>Height:</p><h3>${pokemons[index]['height']}</h2>
+                <img src="img/maßband.svg" class="minilogos"><p>Weight:</p> <h3>${pokemons[index]['weight']}</h2>
+                <img src="img/muckis.svg" class="minilogos"><p>Abilities:</p> <h3>${pokemons[index]['abilities']}</h2>
+                <img src="img/typ.svg" class="minilogos"><p>Cathegory:</p> <h3>${pokemons[index]['cathegory']}</h2>
+
+                <img src="img/X.svg" class="X" onclick="closeOverlay()">
+            </div>
+           `;
+       }
+
+
+       /**
+        * closing overlay with Pokemondata
+       */
+       function closeOverlay() {
+            document.getElementById('overlay').classList.add('d-none');
+            document.getElementById('overlay').classList.remove('overlay');
+            document.getElementById('overlayContent').classList.add('d-none');
+            document.getElementById('overlayContent').classList.remove('overlay-content');
+            document.getElementById('pokecard').classList.remove('pokecard');
+            document.getElementById('pokecard').classList.add('d-none');
        }
     </script>
 
@@ -167,6 +201,12 @@
             text-shadow: 2px 2px rgb(51,38,39);
         }
 
+        .logocard {
+            width: 50px;
+            height: 50px;
+            margin-left: 46%;
+        }
+
         .logo {
             width: 50px;
             height: 50px;
@@ -178,15 +218,80 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            width: 100vh;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: 1;
-            background-color: black;
+            background-color: rgb(51,38,39);
+            opacity: 0.9;
+        }
+
+        .overlay-content {
+            display: flex;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 750px;
+            min-height: 550px;
+            padding: 10px;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .line {
+            width: 70vh;
+        }
+
+        .pokecard {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .pokemon-pic {
+            width: 150px;
+            height: 150px;
+            margin-left: 36%;
+            margin-top: -29px;
+            margin-bottom: -15px;
+        }
+
+        .X {
+            height: 35px;
+            cursor: pointer;
+            transition: all ease-in-out 225ms;
+            margin-top: 40px;
+        }
+
+        .X:hover {
+            transform: scale(1.1);
+        }
+
+        p {
+            font-family: 'Maven Pro', sans-serif;
+            font-size: 20px;
+            line-height: 0.1;
+        }
+
+        h3 {
+            line-height: 0.1;
+        }
+
+        .minilogos {
+            width: 25px;
+            margin-left: 47%;
+            margin-bottom: -10px;
         }
     </style>
 </head>
     <body onload="loadPokemons()">
-        <div class="d-none" id="overlay"></div>
+
+        <div class="d-none" id="overlay">
+            <div class="d-none" id="overlayContent"></div>
+        </div>
+
         <div class="overall">
             <h1 class="header">Pokedex</h1>
 

@@ -154,3 +154,80 @@ h3 {
 .d-none {
     display: none;
 }
+
+@media (max-width: 815px) {
+    .pokedex {
+        width: 150px;
+        height: 110px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .overlay-content {
+        min-width: 550px;
+        min-height: 530px;
+    }
+
+    .pokemon-pic {
+        width: 130px;
+        height: 130px;
+        margin-left: 38%;
+    }
+
+    .X {
+        height: 25px;
+        margin-top: 10px;
+    }
+
+    .logocard {
+        width: 30px;
+        height: 30px;
+        margin-left: 48%;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 670px) {
+    .header {
+        font-size: 70px;
+    }
+
+    .pokedex {
+        width: 130px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 605px) {
+    .header {
+        font-size: 58px;
+        margin-bottom: 45px;
+    }
+
+    #pokedexArea {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .pokedex {
+        margin: 10px;
+    }
+
+    .overlay-content {
+        min-width: 300px;
+    }
+}
